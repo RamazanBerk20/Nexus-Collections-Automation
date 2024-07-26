@@ -13,11 +13,11 @@ class App():
 
         print("Download button clicked")
 
-    def waitUntilFirefoxIsClosed(self):
+    def waitUntilEdgeIsClosed(self):
         c = wmi.WMI()
         while 1:
-            firefox = c.Win32_Process(name="firefox.exe")
-            if not firefox:
+            edge = c.Win32_Process(name="msedge.exe")
+            if not edge:
                 pyautogui.moveTo(10, 10)
                 sleep(1)
                 break
@@ -26,7 +26,7 @@ class App():
         try:
             self.clickDownloadButton()
             sleep(.5)
-            self.waitUntilFirefoxIsClosed()
+            self.waitUntilEdgeIsClosed()
 
         except pyautogui.ImageNotFoundException:
             print("Button not found")
