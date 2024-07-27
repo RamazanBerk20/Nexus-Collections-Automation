@@ -1,5 +1,5 @@
 import pyautogui
-import wmi
+import os
 from time import sleep
 
 class App():
@@ -14,13 +14,9 @@ class App():
         print("Download button clicked")
 
     def waitUntilEdgeIsClosed(self):
-        c = wmi.WMI()
-        while 1:
-            edge = c.Win32_Process(name="msedge.exe")
-            if not edge:
-                pyautogui.moveTo(10, 10)
-                sleep(1)
-                break
+        PROCNAME = "msedge.exe"
+        sleep(4)
+        os.system(f"taskkill /f /im {PROCNAME}")
         
     def run(self):
         try:

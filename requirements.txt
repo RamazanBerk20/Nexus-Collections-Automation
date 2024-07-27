@@ -2,4 +2,3 @@ pyautogui
 opencv-contrib-python
 pyscreeze
 pillow
-wmi
