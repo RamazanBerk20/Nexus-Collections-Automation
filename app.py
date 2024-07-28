@@ -5,7 +5,7 @@ from time import sleep
 class App():
     def __init__(self):
         self.download_button = "download_button.png"
-        self.download_button_start = "download_button_start.png"
+        self.download_start = "download_start.png"
         pyautogui.FAILSAFE = False
 
     def locate_download_button(self) -> tuple:
@@ -26,7 +26,7 @@ class App():
     
     def waitForEdge(self):
         try:
-            pyautogui.locateCenterOnScreen(self.download_button_start)
+            pyautogui.locateCenterOnScreen(self.download_start)
             sleep(.5)
             print("Download started")
 
