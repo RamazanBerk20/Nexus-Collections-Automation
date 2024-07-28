@@ -28,19 +28,24 @@ class App():
             return False
     
     def waitForEdge(self) -> None:
-        try:
-            self.locate_download_start()
-            sleep(.5)
-            print("Download started")
+        while True:
+            try:
+                self.locate_download_start()
+                sleep(.5)
+                print("Download started")
 
-            self.closeEdge()
+                self.closeEdge()
+                print("Edge closed")
+                sleep(1)
 
-        except pyautogui.ImageNotFoundException:
-            print("Download not started...")
+                break
 
-            if not self.isEdgeRunning():
-                print("Edge is not running")
-                return
+            except pyautogui.ImageNotFoundException:
+                print("Download not started...")
+
+                if not self.isEdgeRunning():
+                    print("Edge is not running")
+                    return
         
     def run(self) -> None:
         try:
