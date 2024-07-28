@@ -18,9 +18,8 @@ class App():
     
     def isProcessRunning(self, process_name: str) -> bool:
         try:
-            subprocess.check_output(f'tasklist /FI "IMAGENAME eq {process_name}"', shell=True)
-            return True
-        except:
+            return "msedge.exe" in subprocess.check_output('tasklist /FI "IMAGENAME eq msedge.exe"', shell=True, text=True)
+        except subprocess.CalledProcessError:
             return False
         
 
