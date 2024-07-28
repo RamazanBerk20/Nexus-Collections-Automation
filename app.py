@@ -25,7 +25,7 @@ class App():
         PROCNAME = "msedge.exe"
 
         # Check if Edge is started after clicking button, if not, wait a second to be opened, if still not opened, return nothing
-        sleep(.5)
+        sleep(1)
         if not self.isProcessRunning(PROCNAME):
             return
 
