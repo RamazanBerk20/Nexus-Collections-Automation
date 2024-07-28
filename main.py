@@ -1,6 +1,6 @@
-from app import app
+from app import App
 
-App = app()
+app = App()
 
 while True:
-    App.run()
+    app.run()
