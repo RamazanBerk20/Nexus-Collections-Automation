@@ -29,11 +29,10 @@ class App():
             try:
                 pyautogui.locateCenterOnScreen(self.download_start, confidence=0.85)
                 print("Download started...")
-                sleep(.5)
 
-                os.system(f"taskkill /f /im {PROCNAME}")
-                sleep(1)
+                sleep(.5)
                 
+                os.system(f"taskkill /f /im {PROCNAME}")                
                 break
 
             except pyautogui.ImageNotFoundException:
@@ -47,9 +46,7 @@ class App():
     def run(self) -> None:
         try:
             self.clickDownloadButton()
-            sleep(.5)
             self.waitUntilEdgeIsClosed()
 
         except pyautogui.ImageNotFoundException:
             print("Button not found...")
-            sleep(.25)
