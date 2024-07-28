@@ -2,5 +2,5 @@ from app import App
 
 app = App()
 
-while 1:
+while True:
     app.run()

@@ -8,7 +8,7 @@ class App():
         self.download_start = "download_start.png"
         pyautogui.FAILSAFE = False
 
-    def clickDownloadButton(self):
+    def clickDownloadButton(self) -> None:
         download_button_location = pyautogui.locateCenterOnScreen(self.download_button, confidence=0.85)
         pyautogui.click(download_button_location)
 
@@ -41,15 +41,15 @@ class App():
 
                 # Check if the process is running or hasn't started yet, if not, return
                 if not self.isProcessRunning(PROCNAME):
+                    print("Edge is not running...")
                     return
         
-    def run(self):
+    def run(self) -> None:
         try:
             self.clickDownloadButton()
-
             sleep(.5)
             self.waitUntilEdgeIsClosed()
 
         except pyautogui.ImageNotFoundException:
-            print("Button not found")
+            print("Button not found...")
             sleep(.25)
