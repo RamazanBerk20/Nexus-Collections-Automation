@@ -13,9 +13,23 @@ class App():
         pyautogui.click(download_button_location)
 
         print("Download button clicked")
+    
+    def isProcessRunning(self, process_name: str) -> bool:
+        try:
+            os.system(f"tasklist /FI \"IMAGENAME eq {process_name}\" | findstr {process_name}")
+            return True
+        except:
+            return False
 
-    def waitUntilEdgeIsClosed(self):
+    def waitUntilEdgeIsClosed(self) -> None:
         PROCNAME = "msedge.exe"
+
+        # Check if Edge is started after clicking button, if not, wait a second to be opened, if still not opened, return nothing
+        sleep(.5)
+        if not self.isProcessRunning(PROCNAME):
+            return
+
+        # Wait until download started, then close the app
         while True:
             try:
                 pyautogui.locateCenterOnScreen(self.download_start, confidence=0.85)
@@ -36,4 +50,4 @@ class App():
 
         except pyautogui.ImageNotFoundException:
             print("Button not found")
-            sleep(.5)
+            sleep(.25)
