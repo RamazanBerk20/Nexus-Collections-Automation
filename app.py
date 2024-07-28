@@ -24,7 +24,7 @@ class App():
         except subprocess.CalledProcessError:
             return False
     
-    def waitForEdge(self):
+    def waitForEdge(self) -> None:
         try:
             pyautogui.locateCenterOnScreen(self.download_start)
             sleep(.5)
@@ -39,7 +39,7 @@ class App():
                 print("Edge is not running")
                 return
         
-    def run(self):
+    def run(self) -> None:
         try:
             self.click_download_button()
 
