@@ -5,6 +5,7 @@ from time import sleep
 class App():
     def __init__(self):
         self.download_button = "download_button.png"
+        self.download_start = "download_start.png"
         pyautogui.FAILSAFE = False
 
     def clickDownloadButton(self):
@@ -15,13 +16,22 @@ class App():
 
     def waitUntilEdgeIsClosed(self):
         PROCNAME = "msedge.exe"
-        sleep(4)
-        os.system(f"taskkill /f /im {PROCNAME}")
+        while True:
+            try:
+                pyautogui.locateCenterOnScreen(self.download_start, confidence=0.85)
+                sleep(.5)
+
+                os.system(f"taskkill /f /im {PROCNAME}")
+                sleep(1)
+                
+                break
+
+            except pyautogui.ImageNotFoundException:
+                print("Download hasn't started yet...")
         
     def run(self):
         try:
             self.clickDownloadButton()
-            sleep(.5)
             self.waitUntilEdgeIsClosed()
 
         except pyautogui.ImageNotFoundException:
