@@ -9,7 +9,10 @@ class App():
         pyautogui.FAILSAFE = False
 
     def locate_download_button(self) -> tuple:
-        return pyautogui.locateCenterOnScreen(self.download_button)
+        return pyautogui.locateCenterOnScreen(self.download_button, confidence=0.85)
+    
+    def locate_download_start(self) -> tuple:
+        return pyautogui.locateCenterOnScreen(self.download_start, confidence=0.85)
 
     def click_download_button(self) -> None:
         pyautogui.click(self.locate_download_button())
@@ -26,7 +29,7 @@ class App():
     
     def waitForEdge(self) -> None:
         try:
-            pyautogui.locateCenterOnScreen(self.download_start)
+            self.locate_download_start()
             sleep(.5)
             print("Download started")
 
