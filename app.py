@@ -9,7 +9,7 @@ class App():
         pyautogui.FAILSAFE = False
 
     def locate_download_button(self) -> tuple:
-        return pyautogui.locateCenterOnScreen(self.download_button, confidence=0.85, grayscale=True)
+        return pyautogui.locateCenterOnScreen(self.download_button, confidence=0.85, region=(), grayscale=True)
     
     def locate_download_start(self) -> tuple:
         return pyautogui.locateCenterOnScreen(self.download_start, confidence=0.85, grayscale=True)
