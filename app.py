@@ -38,7 +38,7 @@ class App():
                 print("Edge closed")
                 sleep(1)
 
-                break
+                return
 
             except pyautogui.ImageNotFoundException:
                 print("Download not started...")
