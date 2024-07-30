@@ -9,10 +9,10 @@ class App():
         pyautogui.FAILSAFE = False
 
     def locate_download_button(self) -> tuple:
-        return pyautogui.locateCenterOnScreen(self.download_button, confidence=0.85)
+        return pyautogui.locateCenterOnScreen(self.download_button, confidence=0.85, grayscale=True)
     
     def locate_download_start(self) -> tuple:
-        return pyautogui.locateCenterOnScreen(self.download_start, confidence=0.85)
+        return pyautogui.locateCenterOnScreen(self.download_start, confidence=0.85, grayscale=True)
 
     def click_download_button(self) -> None:
         pyautogui.click(self.locate_download_button())
@@ -46,7 +46,7 @@ class App():
                 if not self.isEdgeRunning():
                     print("Edge is not running")
                     return
-        
+    
     def run(self) -> None:
         try:
             self.click_download_button()

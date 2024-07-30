@@ -156,6 +156,8 @@ cython_debug/
 
 # Custom py files
 debug.py
+debug.pyx
+debug.cpp
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
