@@ -1,2 +1,3 @@
 - [Tampermonkey](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd) and [Nexus No Wait](https://greasyfork.org/tr/scripts/394039-nexus-no-wait) script is a **MUST**
-- UPDATED FOR OTHER BROWSER APPS
+- Programmed for Microsoft Edge Only
+- *Edit: UPDATED FOR OTHER BROWSER APPS!!!
