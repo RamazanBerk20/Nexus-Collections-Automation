@@ -3,9 +3,10 @@ import subprocess
 from time import sleep
 
 class App():
-    def __init__(self):
-        self.download_button = "download_button.png"
-        self.download_start = "download_start.png"
+    def __init__(self, download_button: str = "download_button.png", download_start: str = "download_start.png", browser: str = "msedge.exe") -> None:
+        self.download_button = download_button
+        self.download_start = download_start
+        self.browser = browser
         pyautogui.FAILSAFE = False
 
     def locate_download_button(self) -> tuple:
@@ -18,24 +19,24 @@ class App():
         pyautogui.click(self.locate_download_button())
         print("Download button clicked")
 
-    def close_edge(self) -> None:
-        subprocess.run('taskkill /f /im msedge.exe', shell=True)
+    def close_browser(self) -> None:
+        subprocess.run(f'taskkill /f /im {self.browser}', shell=True)
 
-    def is_edge_running(self) -> bool:
+    def is_browser_running(self) -> bool:
         try:
-            return "msedge.exe" in subprocess.check_output('tasklist /FI "IMAGENAME eq msedge.exe"', shell=True, text=True)
+            return self.browser in subprocess.check_output(f'tasklist /FI "IMAGENAME eq {self.browser}"', shell=True, text=True)
         except subprocess.CalledProcessError:
             return False
     
-    def wait_for_edge(self) -> None:
+    def wait_for_browser(self) -> None:
         while True:
             try:
                 self.locate_download_start()
                 sleep(.5)
                 print("Download started")
 
-                self.close_edge()
-                print("Edge closed")
+                self.close_browser()
+                print(f"{self.browser} closed")
                 sleep(1)
 
                 return
@@ -43,15 +44,15 @@ class App():
             except pyautogui.ImageNotFoundException:
                 print("Download not started...")
 
-                if not self.is_edge_running():
-                    print("Edge is not running")
+                if not self.is_browser_running():
+                    print(f"{self.browser} is not running")
                     return
     
     def run(self) -> None:
         try:
             self.click_download_button()
 
-            self.wait_for_edge()
+            self.wait_for_browser()
 
         except pyautogui.ImageNotFoundException:
             print("Download button not found...")
