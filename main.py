@@ -3,7 +3,7 @@ from sys import argv
 
 app = App(browser=argv[1])
 
-print(f"App Started for {app.browser}...")
+print(f"\n\nApp Started for {app.browser}...\n\n")
 
 while True:
     app.run()
