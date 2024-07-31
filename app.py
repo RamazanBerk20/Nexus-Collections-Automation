@@ -3,7 +3,7 @@ import subprocess
 from time import sleep
 
 class App():
-    def __init__(self, download_button: str = "download_button.png", download_start: str = "download_start.png", browser: str = "msedge.exe") -> None:
+    def __init__(self, browser: str, download_button: str = "download_button.png", download_start: str = "download_start.png") -> None:
         self.download_button = download_button
         self.download_start = download_start
         self.browser = browser
