@@ -6,4 +6,4 @@ app = App(browser=argv[1])
 print(f"\n\nApp Started for {app.browser}...\n\n")
 
 while True:
-    app.run()
+    app.Run()

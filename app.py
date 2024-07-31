@@ -9,33 +9,36 @@ class App:
         self.browser = browser
         pyautogui.FAILSAFE = False
 
-    def locate_download_button(self) -> tuple:
-        return pyautogui.locateCenterOnScreen(self.download_button, confidence=0.85, grayscale=True)
-    
-    def locate_download_start(self) -> tuple:
-        return pyautogui.locateCenterOnScreen(self.download_start, confidence=0.85, grayscale=True)
+    def Locate(slf, image: str) -> tuple:
+        return pyautogui.locateCenterOnScreen(image, confidence=0.85, grayscale=True)
 
-    def click_download_button(self) -> None:
-        pyautogui.click(self.locate_download_button())
+    def Locate_Download_Button(self) -> tuple:
+        return self.Locate(self.download_button)
+    
+    def Locate_Download_Start(self) -> tuple:
+        return self.Locate(self.download_start)
+
+    def Click_Download_Button(self) -> None:
+        pyautogui.click(self.Locate_Download_Button())
         print("Download button clicked")
 
-    def close_browser(self) -> None:
+    def Close_Browser(self) -> None:
         subprocess.run(f'taskkill /f /im {self.browser}', shell=True)
 
-    def is_browser_running(self) -> bool:
+    def Is_Browser_Running(self) -> bool:
         try:
             return self.browser in subprocess.check_output(f'tasklist /FI "IMAGENAME eq {self.browser}"', shell=True, text=True)
         except subprocess.CalledProcessError:
             return False
     
-    def wait_for_browser(self) -> None:
+    def Wait_For_Browser(self) -> None:
         while True:
             try:
-                self.locate_download_start()
+                self.Locate_Download_Start()
                 sleep(.5)
                 print("Download started")
 
-                self.close_browser()
+                self.Close_Browser()
                 print(f"{self.browser} closed")
                 sleep(1)
 
@@ -44,15 +47,15 @@ class App:
             except pyautogui.ImageNotFoundException:
                 print("Download not started...")
 
-                if not self.is_browser_running():
+                if not self.Is_Browser_Running():
                     print(f"{self.browser} is not running")
                     return
     
-    def run(self) -> None:
+    def Run(self) -> None:
         try:
-            self.click_download_button()
+            self.Click_Download_Button()
 
-            self.wait_for_browser()
+            self.Wait_For_Browser()
 
         except pyautogui.ImageNotFoundException:
             print("Download button not found...")
