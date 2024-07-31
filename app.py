@@ -2,7 +2,7 @@ import pyautogui
 import subprocess
 from time import sleep
 
-class App():
+class App:
     def __init__(self, browser: str, download_button: str = "download_button.png", download_start: str = "download_start.png") -> None:
         self.download_button = download_button
         self.download_start = download_start
