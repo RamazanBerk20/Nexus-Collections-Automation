@@ -11,7 +11,7 @@
 To start the application, use the following command in the command prompt:
 
 ```sh
-start.bat {your browser}.exe
+start.bat {process name of your browser}.exe
 ```
 
 For Microsoft Edge, the command would be:
