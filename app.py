@@ -35,12 +35,12 @@ class App:
         while True:
             try:
                 self.Locate_Download_Start()
-                sleep(.5)
+                sleep(1)
                 print("Download started")
 
                 self.Close_Browser()
                 print(f"{self.browser} closed")
-                sleep(1)
+                sleep(.5)
 
                 return
 
