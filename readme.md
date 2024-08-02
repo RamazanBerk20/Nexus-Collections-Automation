@@ -12,11 +12,11 @@
 To start the application, use the following command in the command prompt:
 
 ```sh
-start.bat {process name of your browser}.exe
+main.py {process name of your browser}.exe
 ```
 
 For Microsoft Edge, the command would be:
 
 ```sh
-start.bat msedge.exe
+main.py msedge.exe
 ```
