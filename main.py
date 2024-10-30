@@ -29,10 +29,13 @@ def closeProcess(process):
         return
 
 def isBrowserRunning(browser):
-    for proc in psutil.process_iter():
-        if proc.name() == browser:
-            return True
-    return False
+    try:
+        for proc in psutil.process_iter():
+            if proc.name() == browser:
+                return True
+        return False
+    except psutil.NoSuchProcess:
+        return False
 
 def waitBrowser(browser):
     while True:
